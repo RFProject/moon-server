@@ -9,7 +9,8 @@ import javax.websocket.server.ServerEndpointConfig;
 
 public class ApplicationConfig implements ServerApplicationConfig {
   @Override
-  public Set<ServerEndpointConfig> getEndpointConfigs(Set<Class<? extends Endpoint>> endpointClasses) {
+  public Set<ServerEndpointConfig> getEndpointConfigs(
+      Set<Class<? extends Endpoint>> endpointClasses) {
     return new HashSet<ServerEndpointConfig>();
   }
 

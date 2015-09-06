@@ -1,19 +1,19 @@
 package com.github.taikit.moonserver;
 
-import java.io.IOException;
-
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/flush")
+@ServerEndpoint(
+    value = "/flush",
+    decoders = RequestDecoder.class,
+    encoders = ResponseEncoder.class)
 public class MoonService {
   @OnMessage
-  public void flushLights(String message, Session session, boolean last) {
-    try {
-      session.getBasicRemote().sendText(message, last);
-    } catch (IOException e) {
-      // FIXME
+  public Response flushLights(Request request, Session session) {
+    if (request.getAction() == "unknown") {
+      return Response.error("invalid request");
     }
+    return Response.ok();
   }
 }
