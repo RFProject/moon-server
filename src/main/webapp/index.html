@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>MOON Console</title>
+  <style>
+body {
+  font-family: sans-serif;
+}
+.moon-console {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.moon-console__title {
+  width: 200px;
+  text-align: center;
+  background: #039;
+  color: #FFF;
+}
+.moon-console__button-frame {
+  background: #EEE;
+  width: 200px;
+  height: 125px;
+}
+.moon-console__flush-button {
+  padding: 0.5em 1em;
+  border: 0;
+  background: #036;
+  color: #FFF;
+  font-weight: bold;
+}
+  </style>
+</head>
+<body>
+  <div class="moon-console">
+    <h1 class="moon-console__title">MOON</h1>
+    <div class=".moon-console__button-frame">
+      <button class="moon-console__flush-button">Flush</button>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+$(function() {
+  'use strict';
+
+  var moonSock = new WebSocket('ws://' + window.location.host + '/moon/flush');
+  $('.moon-console__flush-button').click(function() {
+    moonSock.send(JSON.stringify({action: 'flush'}));
+  });
+});
+  </script>
+</body>
+<html>
