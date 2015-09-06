@@ -34,7 +34,7 @@ public class MoonService {
     try {
       if (request.getAction().equals("flush")) {
         for (Session activeSession : activeSessions) {
-          activeSession.getAsyncRemote().sendObject(new Request("flush"));
+          activeSession.getAsyncRemote().sendObject(request);
         }
       } else {
         session.getBasicRemote().sendObject(Response.error("invalid request"));
