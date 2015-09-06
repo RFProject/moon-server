@@ -1,4 +1,4 @@
-package com.github.taikit.moonserv;
+package com.github.taikit.moonserver;
 
 import java.util.HashSet;
 import java.util.Set;
